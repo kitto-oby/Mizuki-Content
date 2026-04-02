@@ -1,0 +1,16 @@
+name: Trigger Main Blog Build
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  trigger-mizuki-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger main repository rebuild
+        uses: peter-evans/repository-dispatch@v2
+        with:
+          token: ${{ secrets.ACCESS_TOKEN }}
+          # 👇 把这里改成你的主博客仓库地址，就是我们需要修改的那一行
+          repository: kitto-oby/Mizuki-Content
+          event-type: build
