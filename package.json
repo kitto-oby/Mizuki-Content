@@ -3,6 +3,8 @@
 	"type": "module",
 	"version": "9.0",
 	"scripts": {
+		"preinstall": "apt-get update && apt-get install -y python3-distutils || true",
+		"build": "pnpm run build",
 		"sync-content": "node scripts/sync-content.js",
 		"init-content": "node scripts/init-content-repo.js",
 		"predev": "node scripts/sync-content.js || true",
